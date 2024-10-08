@@ -17,3 +17,4 @@ public partial class CartItem
 
     public virtual Product? Product { get; set; }
 }
+

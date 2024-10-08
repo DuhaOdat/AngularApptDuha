@@ -1,6 +1,7 @@
 ﻿using AngularApptDuha.Server.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AngularApptDuha.Server.Controllers
 {
@@ -15,9 +16,9 @@ namespace AngularApptDuha.Server.Controllers
 
         [HttpGet("getAllServices")]
         public IActionResult getAllServices() {
-        
 
-            var services= _db.Services.ToList();
+
+    var services = _db.Services.ToList();
             return Ok(services);
         }
 
