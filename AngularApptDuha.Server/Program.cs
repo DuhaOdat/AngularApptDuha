@@ -21,6 +21,16 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Development", builder =>
+    {
+        builder.AllowAnyOrigin()  // Allow any origin
+               .AllowAnyMethod()  // Allow any HTTP method (GET, POST, etc.)
+               .AllowAnyHeader(); // Allow any headers
+    });
+});
+
 var app = builder.Build();
 
 app.UseDefaultFiles();
@@ -36,6 +46,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("Development");
 
 app.MapControllers();
 app.UseCors("Development");
